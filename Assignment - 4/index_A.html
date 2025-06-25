@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS-DOM manipulation</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        div {
+            width: 100%;
+            height:100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        button {
+            font-size: 1.2em;
+            border-radius: 5px;
+        }
+        .theme-day {
+            color: #242424;
+            background-color: #ffffff;
+        }
+        .theme-day button {
+            background-color: aquamarine;
+        }
+        .theme-night{
+            color: #ffffff;
+            background-color: #242424;
+        }
+        .theme-night button {
+            background-color: #7bd68f;
+        }
+    </style>
+</head>
+<body>
+    <div id="theme-container" class="theme-day">
+        <h1>Theme change</h1>
+        <button
+        onclick="changeTheme()"
+        >
+        Change Theme
+    </button>
+    </div>
+</body>
+<script>
+    const changeTheme = () => {
+        let div = document.getElementById('theme-container');
+        console.log(div);
+     
+        if (div.className === 'theme-day') {
+            div.className = 'theme-night';
+        }
+        else {
+            div.className = 'theme-day';
+        }
+        console.log("theme toggled!")
+    }
+
+</script>
+</html>

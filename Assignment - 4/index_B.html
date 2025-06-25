@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>create div</title>
+    <style>
+        #container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .box {
+            margin: 10px;
+            width: 100px;
+            height: 60px;
+            background-color: rgb(220, 77, 77);
+            border-radius: 10px;
+        }
+        button {
+            font-size: 1.2em;
+            border-radius: 5px;
+            background-color: rgb(148, 133, 201);
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <button id="divCreator" onclick="divCreator()">
+            Add a div
+        </button>
+    </div>
+</body>
+<script>
+    const divCreator = () => {
+        let container = document.getElementById('container')
+        let newDiv = document.createElement("div");
+        newDiv.className = 'box';
+        container.appendChild(newDiv);
+    }
+</script>
+</html>

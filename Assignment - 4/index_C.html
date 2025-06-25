@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hide-N-Seek</title>
+    <style>
+        body {
+            background-color: rgb(243, 239, 233);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        button {
+            font-size: 1.2em;
+            border-radius: 5p
+        }
+    </style>
+</head>
+<body>
+    <h1>Play Hide-N-Seek!</h1>
+    <p id="hide">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae quo quaerat, nemo eaque odio iure qui quidem nulla velit perferendis saepe assumenda ipsa.
+    </p>
+    <button id="hideIt" onclick="hideToggler()">Hide</button>
+</body>
+<script>
+    const hideToggler = () => {
+        let para = document.getElementById('hide');
+        if (para.style.display === 'none'){
+            para.style.display = 'block';
+        }
+        else {
+            para.style.display = 'none';
+        }
+        console.log(para.style.display)
+    }
+</script>
+</html>

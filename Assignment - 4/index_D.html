@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic css addition</title>
+    <style>
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+        }
+        #css-display-box {
+            border: 2px solid orange;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1 id="girgit">Change Text</h1>
+        <div id="radioBtn">
+            <input type="radio" name="color" id="red" value="red">
+            <label for="red">Red</label><br>
+            <input type="radio" name="color" id="blue" value="blue">
+            <label for="blue">Blue</label><br>
+            <input type="radio" name="color" id="green" value="green">
+            <label for="green">Green</label><br>
+            <input type="radio" name="color" id="cyan" value="cyan">
+            <label for="cyan">Cyan</label><br>
+            <input type="radio" name="color" id="black" value="black">
+            <label for="black">Black</label><br>
+            <input type="radio" name="color" id="magenta" value="magenta">
+            <label for="magenta">Magenta</label><br>
+        </div>
+        <br>
+        <input type="range" id="font-weight" min="5" max="200" value="50">
+        <br><br>
+        <button id="bold">Bold</button>
+        <button id="italic">Italic</button>
+        <button id="underline">Underline</button>
+        <br><br>
+        <select name="font-family" id="font-list">
+            <option value="serif">Serif</option>
+            <option value="cursive">Cursive</option>
+            <option value="arial">Arial</option>
+            <option value="monospace">Monospace</option>
+        </select>
+        <br><br>
+        <button id="giveProp">Get Properties</button>
+        <p id="css-display-box"></p>
+    </div>
+</body>
+    <script>
+        const container = document.getElementById('container');
+        const girgit = document.getElementById('girgit')
+        const radios = document.querySelectorAll('input[name="color"]');
+
+        function checkColor(event) {
+            const selected = event.target.value;
+
+            if (selected === 'red') {
+                girgit.style.color = 'red';
+            }
+            else if (selected === 'blue') {
+                girgit.style.color = 'blue';
+            }
+            else if (selected === 'blue') {
+                girgit.style.color = 'blue';
+            }
+            else if (selected === 'green') {
+                girgit.style.color = 'green';
+            }
+            else if (selected === 'cyan') {
+                girgit.style.color = 'cyan';
+            }
+            else if (selected === 'magenta') {
+                girgit.style.color = 'magenta';
+            }
+            else {
+                girgit.style.color = 'black';
+            }
+        }
+        radios.forEach(radio => {
+            radio.addEventListener('change', checkColor);
+        });
+
+        document.getElementById("font-weight").addEventListener("input", function () {
+            let w = this.value;
+            girgit.style.fontSize = w + "px";
+        });
+
+        document.getElementById("italic").addEventListener("click", function () {
+            girgit.style.fontStyle = girgit.style.fontStyle === "italic" ? "normal" : "italic";
+        });
+        document.getElementById("underline").addEventListener("click", function () {
+            girgit.style.textDecoration = girgit.style.textDecoration === "underline" ? "none" : "underline";
+        });
+        document.getElementById("bold").addEventListener("click", function () {
+            girgit.style.fontWeight = girgit.style.fontWeight === "bold" ? "normal" : "bold";
+        });
+
+        document.getElementById("font-list").addEventListener("change", function () {
+            let font = this.value;
+            girgit.style.fontFamily = font;
+        });
+
+        document.getElementById('giveProp').addEventListener("click", function() {
+            let appliedStyle = window.getComputedStyle(girgit);
+            let styling = `color: ${appliedStyle.color}; font-size: ${appliedStyle.fontSize}; font-family: ${appliedStyle.fontFamily}; font-weight: ${appliedStyle.fontWeight}; font-style: ${appliedStyle.fontStyle}; text-decoration: ${appliedStyle.textDecorationLine};`;
+            document.getElementById("css-display-box").innerText = styling;
+            console.log('cliked')
+        });
+    </script>
+</html>
